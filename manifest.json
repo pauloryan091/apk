@@ -1,7 +1,7 @@
 {
   "name": "Cartinhas de Amor",
   "short_name": "Meu Amor",
-  "description": "Mensagens especiais de amor para minha namorada",
+  "description": "Mensagens especiais para minha namorada",
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "#ffafbd",

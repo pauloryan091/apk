@@ -2,10 +2,69 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Cartinhas de Amor ❤️</title>
+    
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- ========== TAGS PARA APK ========== -->
+    <!-- Manifest PWA -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Cor da barra (Android) -->
+    <meta name="theme-color" content="#e91e63">
+    
+    <!-- Para funcionar offline -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    
+    <!-- ========== ÍCONES SIMPLIFICADOS ========== -->
+    <!-- Para navegadores normais -->
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/210/210545.png" type="image/png">
+    
+    <!-- Para iPhone (APENAS ESTE É NECESSÁRIO) -->
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/210/210545.png">
+    
+    <!-- Para iPhone tela cheia -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- Nome no iPhone -->
+    <meta name="apple-mobile-web-app-title" content="Cartinhas de Amor">
+    
+    <!-- Para Windows/Edge -->
+    <meta name="msapplication-TileColor" content="#e91e63">
+    
+    <!-- Service Worker Script -->
+    <script>
+        // Registra Service Worker quando página carregar
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('sw.js')
+                    .then(function(registration) {
+                        console.log('✅ App pronto para funcionar offline!');
+                    })
+                    .catch(function(error) {
+                        console.log('❌ Erro no Service Worker:', error);
+                    });
+            });
+        }
+        
+        // Previne zoom com dois dedos
+        document.addEventListener('touchstart', function(e) {
+            if (e.touches.length > 1) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+        
+        // Previne menu de contexto (segurar dedo)
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+    </script>
+    <!-- ========== FIM DAS TAGS APK ========== -->
 </head>
 <body>
     <div class="container">

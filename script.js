@@ -258,3 +258,25 @@ if ('serviceWorker' in navigator) {
             .catch(err => console.log('❌ Service Worker falhou:', err));
     });
 }
+  // Registra o Service Worker
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('sw.js')
+        .then(function(registration) {
+          console.log('✅ Service Worker registrado com sucesso:', registration.scope);
+        })
+        .catch(function(error) {
+          console.log('❌ Falha ao registrar Service Worker:', error);
+        });
+    });
+  }
+  
+  // Previne comportamentos indesejados em mobile
+  document.addEventListener('touchmove', function(event) {
+    if (event.scale !== 1) { event.preventDefault(); }
+  }, { passive: false });
+  
+  // Previne o menu de contexto (segurar dedo)
+  document.addEventListener('contextmenu', function(event) {
+    event.preventDefault();
+  });
