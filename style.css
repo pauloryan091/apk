@@ -251,3 +251,525 @@ footer {
     -ms-user-select: none;
     user-select: none;
 }
+/* Reset completo e otimizado para iOS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+}
+
+:root {
+    --primary-color: #e91e63;
+    --secondary-color: #ff6b8b;
+    --accent-color: #ff4081;
+    --light-color: #fff5f7;
+    --dark-color: #d81b60;
+    --text-color: #555;
+    --white: #ffffff;
+    --shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    --radius: 25px;
+    --transition: all 0.3s ease;
+    --safe-area-inset-top: env(safe-area-inset-top);
+    --safe-area-inset-bottom: env(safe-area-inset-bottom);
+    --safe-area-inset-left: env(safe-area-inset-left);
+    --safe-area-inset-right: env(safe-area-inset-right);
+}
+
+/* Corrige problemas de overflow em iOS */
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, #ffafbd 0%, #ffc3a0 100%);
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    padding-top: calc(15px + var(--safe-area-inset-top));
+    padding-bottom: calc(15px + var(--safe-area-inset-bottom));
+    padding-left: calc(15px + var(--safe-area-inset-left));
+    padding-right: calc(15px + var(--safe-area-inset-right));
+    touch-action: manipulation;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    line-height: 1.5;
+    overscroll-behavior: none;
+}
+
+.container {
+    width: 100%;
+    max-width: min(95vw, 500px);
+    background-color: rgba(255, 255, 255, 0.98);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: max(15px, 3vw);
+    text-align: center;
+    border: 3px solid var(--secondary-color);
+    margin: 10px;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Header responsivo */
+header {
+    margin-bottom: max(15px, 4vw);
+    padding-bottom: max(10px, 2vw);
+    border-bottom: 2px dashed var(--secondary-color);
+    position: relative;
+}
+
+header h1 {
+    color: var(--primary-color);
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    margin-bottom: max(5px, 1.5vw);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    word-wrap: break-word;
+    hyphens: auto;
+    line-height: 1.3;
+    padding: 0 10px;
+}
+
+header h1 i {
+    color: var(--accent-color);
+    margin-right: max(5px, 1vw);
+    font-size: 0.9em;
+}
+
+.subtitle {
+    color: var(--accent-color);
+    font-size: clamp(0.8rem, 3.5vw, 0.95rem);
+    font-style: italic;
+    padding: 0 10px;
+    word-wrap: break-word;
+}
+
+/* Container de cards otimizado para iOS */
+.cards-container {
+    min-height: max(250px, 40vh);
+    max-height: 60vh;
+    background: linear-gradient(145deg, #fff5f7, #ffeef2);
+    border-radius: 20px;
+    padding: max(15px, 3vw);
+    margin: max(15px, 3vw) 0;
+    box-shadow: 
+        inset 0 0 15px rgba(255, 107, 139, 0.1),
+        0 5px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid rgba(255, 107, 139, 0.3);
+    transition: var(--transition);
+    -webkit-overflow-scrolling: touch;
+}
+
+.card {
+    width: 100%;
+    animation: fadeIn 0.5s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card h2 {
+    color: var(--dark-color);
+    font-size: clamp(1.2rem, 4.5vw, 1.6rem);
+    margin-bottom: max(10px, 2vw);
+    font-family: 'Georgia', serif;
+    padding-bottom: max(8px, 1.5vw);
+    border-bottom: 2px dotted #ff9eb5;
+    word-wrap: break-word;
+    hyphens: auto;
+    line-height: 1.3;
+    padding: 0 10px;
+}
+
+.message {
+    font-size: clamp(0.95rem, 3.5vw, 1.1rem);
+    line-height: 1.5;
+    color: var(--text-color);
+    font-family: 'Georgia', serif;
+    text-align: left;
+    padding: max(12px, 2vw);
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    border-left: 4px solid var(--primary-color);
+    margin: max(8px, 1.5vw) 0;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    flex-grow: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.signature {
+    margin-top: max(15px, 3vw);
+    text-align: right;
+    color: var(--primary-color);
+    font-style: italic;
+    font-weight: bold;
+    font-size: clamp(0.9rem, 3vw, 1rem);
+    padding: max(8px, 1.5vw);
+    border-top: 1px dashed #ff9eb5;
+    word-wrap: break-word;
+}
+
+/* CONTROLES OTIMIZADOS PARA IOS - CORREÇÃO PRINCIPAL */
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: max(8px, 2vw);
+    margin: max(20px, 4vw) 0;
+    width: 100%;
+}
+
+.nav-btn, .action-btn {
+    padding: max(12px, 3vw) max(15px, 4vw);
+    border: none;
+    border-radius: 50px;
+    font-size: clamp(0.85rem, 3.5vw, 0.95rem);
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: max(6px, 1vw);
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    min-height: 44px; /* Tamanho mínimo para toque em iOS */
+    -webkit-appearance: none;
+    appearance: none;
+    position: relative;
+    flex: 1 1 auto;
+    min-width: 0; /* Permite que os botões encolham */
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Especificamente para botões de navegação */
+.nav-btn {
+    background: linear-gradient(to right, #ff9a9e, #fad0c4);
+    color: #fff;
+    flex: 1 1 40%; /* Flexibilidade para telas pequenas */
+    min-width: 100px;
+}
+
+/* Botão principal maior */
+.action-btn {
+    background: linear-gradient(to right, #ff6b8b, #ff8e53);
+    color: white;
+    flex: 1 1 100%; /* Ocupa linha inteira em telas muito pequenas */
+    order: 3; /* Coloca na última linha */
+    margin-top: 5px;
+}
+
+/* Estados de interação otimizados para touch */
+.nav-btn:hover, .action-btn:hover,
+.nav-btn:active, .action-btn:active {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.nav-btn:active, .action-btn:active {
+    transform: translateY(1px) scale(0.98);
+}
+
+/* Remove estilos padrão do iOS */
+.nav-btn::-moz-focus-inner,
+.action-btn::-moz-focus-inner {
+    border: 0;
+}
+
+.nav-btn:focus,
+.action-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 107, 139, 0.3);
+}
+
+/* Footer responsivo */
+footer {
+    margin-top: max(15px, 3vw);
+    padding-top: max(12px, 2vw);
+    border-top: 1px solid rgba(255, 107, 139, 0.3);
+    color: var(--accent-color);
+    font-size: clamp(0.8rem, 3vw, 0.9rem);
+    word-wrap: break-word;
+    padding: 0 10px;
+}
+
+.heart-beat {
+    color: var(--primary-color);
+    animation: heartbeat 1.5s infinite;
+    margin: 0 max(2px, 0.5vw);
+    display: inline-block;
+}
+
+/* Animações */
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    5% { transform: scale(1.2); }
+    10% { transform: scale(1); }
+    15% { transform: scale(1.2); }
+    20% { transform: scale(1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(15px) translateZ(0); /* Hardware acceleration */
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0) translateZ(0);
+    }
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 107, 139, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(255, 107, 139, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 107, 139, 0); }
+}
+
+.counter {
+    margin: max(8px, 1.5vw) 0;
+    color: var(--secondary-color);
+    font-weight: bold;
+    font-size: clamp(0.85rem, 3vw, 0.9rem);
+    padding: 0 10px;
+}
+
+/* Efeito de toque para mobile */
+.tap-hint {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    color: var(--secondary-color);
+    font-size: clamp(0.75rem, 2.5vw, 0.8rem);
+    animation: pulse 2s infinite;
+    padding: 0 10px;
+}
+
+/* MEDIA QUERIES ESPECÍFICAS PARA IOS E DISPOSITIVOS */
+
+/* iPhone muito pequeno (SE, 5, 5S) */
+@media (max-width: 320px) {
+    .container {
+        padding: 12px;
+        margin: 5px;
+    }
+    
+    .controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .nav-btn, .action-btn {
+        width: 100%;
+        flex: 1 1 100%;
+        order: initial;
+        margin-top: 0;
+    }
+    
+    .action-btn {
+        order: 3;
+    }
+    
+    .cards-container {
+        min-height: 200px;
+        padding: 12px;
+    }
+    
+    .message {
+        padding: 10px;
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+}
+
+/* iPhone normal (6, 7, 8, X, 11, 12) */
+@media (min-width: 321px) and (max-width: 414px) {
+    .controls {
+        gap: 10px;
+    }
+    
+    .nav-btn {
+        flex: 1 1 45%;
+    }
+    
+    .action-btn {
+        flex: 1 1 100%;
+        order: 3;
+    }
+}
+
+/* iPhone Plus e telas médias */
+@media (min-width: 415px) and (max-width: 767px) {
+    .controls {
+        gap: 12px;
+    }
+    
+    .nav-btn {
+        flex: 1 1 30%;
+    }
+    
+    .action-btn {
+        flex: 1 1 100%;
+        order: 3;
+    }
+}
+
+/* iPad e tablets pequenos (modo retrato) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .container {
+        max-width: min(90vw, 600px);
+        padding: 25px;
+    }
+    
+    .controls {
+        flex-wrap: nowrap;
+        gap: 15px;
+    }
+    
+    .nav-btn {
+        flex: 1;
+    }
+    
+    .action-btn {
+        flex: 2;
+        order: initial;
+        margin-top: 0;
+    }
+    
+    .cards-container {
+        min-height: 300px;
+    }
+}
+
+/* Desktop e telas maiores */
+@media (min-width: 1025px) {
+    .controls {
+        flex-wrap: nowrap;
+        gap: 20px;
+    }
+    
+    .nav-btn {
+        flex: 1;
+    }
+    
+    .action-btn {
+        flex: 1.5;
+        order: initial;
+        margin-top: 0;
+    }
+}
+
+/* Modo paisagem em dispositivos móveis */
+@media (max-height: 500px) and (orientation: landscape) {
+    body {
+        padding: 10px;
+        align-items: flex-start;
+        overflow-y: auto;
+    }
+    
+    .container {
+        margin: 20px auto;
+        max-width: 90vw;
+    }
+    
+    .cards-container {
+        min-height: 180px;
+        max-height: 40vh;
+    }
+    
+    .controls {
+        margin: 15px 0;
+    }
+    
+    .nav-btn, .action-btn {
+        padding: 10px 15px;
+        min-height: 40px;
+    }
+}
+
+/* Suporte para notch e safe areas do iOS */
+@supports (padding: max(0px)) {
+    body {
+        padding-left: max(15px, env(safe-area-inset-left));
+        padding-right: max(15px, env(safe-area-inset-right));
+        padding-top: max(15px, env(safe-area-inset-top));
+        padding-bottom: max(15px, env(safe-area-inset-bottom));
+    }
+}
+
+/* Para dispositivos com hover (não touch) */
+@media (hover: hover) and (pointer: fine) {
+    .nav-btn:hover, .action-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+}
+
+/* Prevenir zoom em inputs no iOS */
+@media screen and (max-width: 767px) {
+    input, select, textarea, button {
+        font-size: 16px; /* Previne zoom no iOS */
+    }
+}
+
+/* Impedir seleção de texto */
+.prevent-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Melhorar performance de animações em iOS */
+.card, .nav-btn, .action-btn {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Scrollbar personalizada para iOS */
+.message::-webkit-scrollbar {
+    width: 5px;
+}
+
+.message::-webkit-scrollbar-track {
+    background: rgba(255, 107, 139, 0.1);
+    border-radius: 10px;
+}
+
+.message::-webkit-scrollbar-thumb {
+    background: rgba(255, 107, 139, 0.3);
+    border-radius: 10px;
+}
+
+.message::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 107, 139, 0.5);
+}
